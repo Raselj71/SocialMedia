@@ -21,7 +21,7 @@ export const authOptions = {
         token.name = user.name;
         token.email = user.email;
         token.userid=user._id
-        token.profilePicture=user. profilePicture
+        token.image=user.profilePicture
         
       }
       return token;
@@ -32,7 +32,7 @@ export const authOptions = {
         session.user.name = token.name;
         session.user.email = token.email;
         session.user.id=token.userid
-        session.user.profilePicture=token.profilePicture
+        session.user.image=token.image
         
         
       }
