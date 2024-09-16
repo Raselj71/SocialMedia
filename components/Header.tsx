@@ -12,6 +12,8 @@ import { BsMessenger } from "react-icons/bs";
 import { RiNotificationFill } from "react-icons/ri";
 import { useSession ,signOut} from "next-auth/react";
 import { usePathname } from 'next/navigation'
+import { BsFillCollectionPlayFill } from "react-icons/bs";
+
 
 
 
@@ -33,7 +35,7 @@ function Header() {
 
          <div className='hidden md:flex  items-center space-x-4'>
              <Link className={`text-2xl text-slate-600 hover:bg-slate-100 rounded-md w-24 h-12 flex justify-center items-center ${pathname==="/dashbord"?"text-blue-600 border-b-2 active border-blue-600 rounded-b-none":""}`} href={"/dashbord"}><AiFillHome/></Link>
-             <Link className={`text-2xl text-slate-600 hover:bg-slate-100 rounded-md w-24 h-12 flex justify-center items-center ${pathname==="/dashbord/video"?"text-blue-600 border-b-2 active border-blue-600 rounded-b-none":""}`} href={"/dashbord/video"}><RiFileVideoFill/></Link>
+             <Link className={`text-2xl text-slate-600 hover:bg-slate-100 rounded-md w-24 h-12 flex justify-center items-center ${pathname==="/dashbord/video"?"text-blue-600 border-b-2 active border-blue-600 rounded-b-none":""}`} href={"/dashbord/video"}><BsFillCollectionPlayFill /></Link>
              <Link className={`text-2xl text-slate-600 hover:bg-slate-100 rounded-md w-24 h-12 flex justify-center items-center ${pathname==="/dashbord/group"?"text-blue-600 border-b-2 active border-blue-600 rounded-b-none":""}`} href={"/dashbord/group"}><HiMiniUserGroup/></Link>
              <Link className={`text-2xl text-slate-600 hover:bg-slate-100 rounded-md w-24 h-12 flex justify-center items-center ${pathname==="/dashbord/friends"?"text-blue-600 border-b-2 active border-blue-600 rounded-b-none":""}`} href={"/dashbord/friends"}><MdGroupAdd/></Link>
              

@@ -1,4 +1,6 @@
 import Header from "@/components/Header";
+import LeftSidebar from "@/components/LeftSidebar";
+import RightSidebar from "@/components/RightSidebar";
 export default function Layout({
     children,
   }: Readonly<{
@@ -9,7 +11,17 @@ export default function Layout({
         <nav>
              <Header/>
         </nav>
-        <main>{children}</main>
+        <main className="flex w-full mt-4">
+              <div className="hidden lg:block lg:w-1/4">
+                       <LeftSidebar/>
+              </div>
+               <div className="w-full lg:w-[60%]  px-4 lg:px-10">
+               {children}
+               </div>
+               <div className="hidden lg:block lg:w-1/4">
+
+               </div>
+        </main>
       
       </>
     )

@@ -18,9 +18,9 @@ export const authOptions = {
     async jwt({ token, user }:any) {
       if (user) {
         token.id = user.id;
-        token.name = user.name;
+        token.name = user.firstName;
         token.email = user.email;
-        token.userid=user._id
+      
         token.image=user.profilePicture
         
       }
@@ -31,7 +31,7 @@ export const authOptions = {
         session.id = token.id;
         session.user.name = token.name;
         session.user.email = token.email;
-        session.user.id=token.userid
+        session.user.id=token.id
         session.user.image=token.image
         
         
