@@ -27,7 +27,7 @@ function Header() {
   return (
     <div className='bg-white w-full px-10 py-2 drop-shadow-md flex justify-between lg:justify-around items-center'>
          <div className='flex items-center space-x-4'>
-              <Image src={Logo} alt='Logo' width={40} height={40}/>
+               <Link href={'/dashbord'}><Image src={Logo} alt='Logo' width={40} height={40}/></Link>
               <input className={`bg-[#f2f4f7] h-12 rounded-full px-3 outline-none ${!isSearch?"hidden":""}`} type='search' placeholder='Search Facebook'/>
               <button className={`text-gray-500 rounded-full bg-gray-200 p-3 ${isSearch?"hidden":""}`} onClick={()=>{setSearch(!isSearch)}}><IoSearchSharp/></button>
          </div>

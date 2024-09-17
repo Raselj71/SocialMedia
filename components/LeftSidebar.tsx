@@ -9,7 +9,7 @@ function LeftSidebar() {
   return (
     <div className='mx-4 flex flex-col'>
         
-         <Link href={'/'}>
+         <Link href={'/dashbord/profile'}>
                    <div className='flex items-center space-x-6 hover:bg-slate-300 px-4 py-2 rounded-md'>
                    <img src={session?.user?.image!} alt='image' className='size-10 rounded-full'/>
                         <p className='font-bold text-xl '>{session?.user?.name}</p>

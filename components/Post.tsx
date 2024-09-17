@@ -6,7 +6,8 @@ import { BsEmojiLaughing } from "react-icons/bs";
 import { FaUserTag } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import 'dotenv/config'
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -58,9 +59,12 @@ function Post({ visible, close }: any) {
             setContent('');
             setMediaFiles([]);
             console.log("post upload successfully")
+            toast.success('Post uploaded')
+            close()
            }
     } catch (error) {
          console.log(error)
+         toast.error('post upload failed')
     }
 
 

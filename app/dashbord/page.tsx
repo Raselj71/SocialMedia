@@ -6,6 +6,8 @@ import { PiImagesBold } from "react-icons/pi";
 import { BsEmojiLaughing } from "react-icons/bs";
 import Post from "@/components/Post";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -15,7 +17,7 @@ const Page = () => {
 
   return (
     <section className="w-full lg:px-10">
-
+     <ToastContainer/>
       <Post  visible={visible} close={()=>{SetVisible(!visible)}}/>
 
       <div className="bg-white w-full px-2 rounded-lg">
