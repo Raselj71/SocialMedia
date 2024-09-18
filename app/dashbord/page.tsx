@@ -5,15 +5,33 @@ import { RiVideoAddFill } from "react-icons/ri";
 import { PiImagesBold } from "react-icons/pi";
 import { BsEmojiLaughing } from "react-icons/bs";
 import Post from "@/components/Post";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useQuery } from "react-query";
+import PostCard from "@/components/PostCard";
 
 
 
-const Page = () => {
+const Page =() => {
   const {data:session} = useSession();
   const[visible , SetVisible]=useState(false)
+
+
+  const { isLoading, error, data } = useQuery('getpost', () =>
+    fetch('http://localhost:5000/post/getall').then(res =>
+      res.json()
+    )
+  )
+
+  if (isLoading) return 'Loading...'
+
+  if (error) return 'An error has occurred: '
+
+
+   console.log(data)
+
+  
 
   return (
     <section className="w-full lg:px-10">
@@ -45,7 +63,12 @@ const Page = () => {
          
       </div>
       
-
+       <div className="flex flex-col gap-2 mt-5">
+               {data.post.map((post:any)=>(
+                  <PostCard auhthorId={post.authorId} content={post.content} updatedAt={post.updatedAt } media={post.media} postId={post.id} authorFirstName={post.author.firstName} authorLastName={post.author.lastName}/>
+               ))}
+              
+       </div>
    
     </section>
   );
