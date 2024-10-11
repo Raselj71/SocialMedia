@@ -1,4 +1,9 @@
 import React from "react";
+import { BiLike } from "react-icons/bi";
+import { FaRegCommentDots } from "react-icons/fa";
+import { PiShareFat } from "react-icons/pi";
+
+
 
 type authortype = {
   id: number;
@@ -59,6 +64,21 @@ function PostCard({
               </div>
             ))}
         </div>
+      
+         <div className="flex justify-between mx-10 mt-4">
+             <div >
+               <button className="flex items-center gap-2  text-gray-600"><BiLike/> <span className="font-semibold">Like</span></button>
+              
+             </div>
+             <div >
+               <button className="flex items-center gap-2  text-gray-600"><FaRegCommentDots/>  <span className="font-semibold">Comment</span></button>
+             
+             </div>
+             <div >
+               <button className="flex items-center gap-2  text-gray-600"><PiShareFat/>  <span className="font-semibold">Share</span></button>
+             
+             </div>
+         </div>
       </div>
     </div>
   );
