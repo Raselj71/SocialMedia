@@ -8,6 +8,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import 'dotenv/config'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Button from "./Button";
 
 
 
@@ -17,6 +18,7 @@ function Post({ visible, close }: any) {
     const [mediaFiles, setMediaFiles] = useState([]);
     const [content, setContent]=useState('')
     const [showInput, setInput]=useState(false)
+    const [isloading, setLoding]=useState(false)
 
   const handleFileChange = (event:any) => {
     const files = Array.from(event.target.files); 
@@ -50,6 +52,7 @@ function Post({ visible, close }: any) {
     })
 
     try {
+          setLoding(true)
            const response= await fetch(`http://localhost:5000/post/add`,{
             method:"POST",
             body:formData
@@ -65,6 +68,8 @@ function Post({ visible, close }: any) {
     } catch (error) {
          console.log(error)
          toast.error('post upload failed')
+    }finally{
+      setLoding(false)
     }
 
 
@@ -84,7 +89,7 @@ function Post({ visible, close }: any) {
 
           <div>
              <form onSubmit={handleSubmit}>
-                <textarea value={content} onChange={(e)=>{setContent(e.target.value)}} placeholder={`What's on your mind,? ${session?.user?.name}`} name="post" id="post" className="w-full p-4 outline-none"></textarea>
+                <textarea value={content} onChange={(e)=>{setContent(e.target.value)}} placeholder={`What's on your mind,? ${session?.user?.name}`} name="post" id="post" required className="w-full p-4 outline-none"></textarea>
 
                   <div>
 
@@ -119,8 +124,8 @@ function Post({ visible, close }: any) {
                             </div>
                        </div>
                  </div>
-
-                 <button type="submit" className="w-full mt-4 bg-blue-600 text-white rounded-md text-xl py-2">Post</button>
+                  <Button text="Post" loadingText="posting" buttonType="submit" className="w-full mt-4 bg-blue-600 text-white rounded-md text-xl py-2" isLoading={isloading}/>
+                
              </form>
           </div>
       </div>

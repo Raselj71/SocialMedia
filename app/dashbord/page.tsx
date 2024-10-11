@@ -65,7 +65,7 @@ const Page =() => {
       
        <div className="flex flex-col gap-2 mt-5">
                {data.post.map((post:any)=>(
-                  <PostCard auhthorId={post.authorId} content={post.content} updatedAt={post.updatedAt } media={post.media} postId={post.id} authorFirstName={post.author.firstName} authorLastName={post.author.lastName}/>
+                  <PostCard auhthorId={post.authorId} content={post.content} updatedAt={post.updatedAt } media={post.media} postId={post.id} author={post.author}/>
                ))}
               
        </div>
