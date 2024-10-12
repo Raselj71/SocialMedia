@@ -5,7 +5,7 @@ function PostCard({postId, content,updatedAt,authorFirstName, authorLastName,auh
     <div className='bg-white p-4 rounded-md'>
          <div>
               <div>
-              <img src={""} alt='image' className='size-10 rounded-full'/>
+              <img src={media} alt='image' className='size-10 rounded-full'/>
                <p></p>
               </div>
 
