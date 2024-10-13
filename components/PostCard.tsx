@@ -1,3 +1,5 @@
+
+import { uselikeMutation } from "@/config/postLikeMuted";
 import React from "react";
 import { BiLike } from "react-icons/bi";
 import { FaRegCommentDots } from "react-icons/fa";
@@ -5,7 +7,8 @@ import { PiShareFat } from "react-icons/pi";
 
 
 
-type authortype = {
+
+type usertype = {
   id: number;
   firstName: string;
   lastName: string;
@@ -17,27 +20,32 @@ type mediaType = {
   postId: number;
 };
 
-function PostCard({
+ function PostCard({
   postId,
-  authorId,
+  userId,
   content,
   updatedAt,
-  author,
+  user,
   media,
 }: {
   postId: number;
-  authorId: number;
+  userId: number;
   content: string;
   updatedAt: string;
-  author: authortype;
+  user: usertype;
   media: mediaType[];
 }) {
+     const likeMutation=uselikeMutation();
+     
+     
+   
+
   return (
     <div className="bg-white p-4 rounded-md">
       <div>
         <div className="flex items-center gap-4">
           <img src={""} alt="image" className="size-10 rounded-full" />
-          <p className="font-semibold">{author.firstName } {author.lastName}</p>
+          <p className="font-semibold">{user.firstName } {user.lastName}</p>
         </div>
 
         <div>{content}</div>
@@ -64,10 +72,14 @@ function PostCard({
               </div>
             ))}
         </div>
-      
-         <div className="flex justify-between mx-10 mt-4">
+         <div>
+           
+         </div>
+        <div>
+          <hr />
+        <div className="flex justify-between mx-10 mt-4 lg:mx-20">
              <div >
-               <button className="flex items-center gap-2  text-gray-600"><BiLike/> <span className="font-semibold">Like</span></button>
+               <button onClick={()=>{likeMutation.mutate({postId,userId})}}  className="flex items-center gap-2  text-gray-600"><BiLike className={``}/> <span className="font-semibold">Like</span></button>
               
              </div>
              <div >
@@ -79,6 +91,11 @@ function PostCard({
              
              </div>
          </div>
+       
+          </div> 
+      </div>
+      <div>
+           <hr />
       </div>
     </div>
   );

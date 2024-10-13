@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Button from "./Button";
 function Signup({ visible, close }: any) {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
@@ -12,6 +13,7 @@ function Signup({ visible, close }: any) {
   const [lastName, setLasttName]=useState("")
   const [email, setEmail]=useState('')
   const [password, setPassword]=useState('')
+  const[isloading, setLoading]=useState(false)
 
 
   const router=useRouter()
@@ -33,7 +35,7 @@ function Signup({ visible, close }: any) {
     e.preventDefault()
 
     try {
-
+        setLoading(true)
         console.log("your are in  post route")
         const dateOfBirth = new Date(`${year}-${month}-${day}`);
 
@@ -58,6 +60,8 @@ function Signup({ visible, close }: any) {
     } catch (error) {
         console.log(error)
         
+    }finally{
+      setLoading(false)
     }
            
 
@@ -197,10 +201,8 @@ function Signup({ visible, close }: any) {
              By clicking Sign Up, you agree to our Terms, <span className="underline text-blue-600">Privacy Policy</span> and <span className="underline text-blue-600">Cookies Policy</span>. You may receive SMS notifications from us and can opt out at any time.
              </div>
             <div>
-                  <button type="submit" className="bg-[#42b72a] w-full text-white rounded-md mt-4 h-10 text-xl">
-                    Signup
-
-                  </button>
+                 <Button buttonType="submit" className="bg-[#42b72a] w-full text-white rounded-md mt-4 h-10 text-xl" text="Signup" isLoading={isloading} loadingText="creating account..."/>
+                
             </div>
           </div>
         </form>

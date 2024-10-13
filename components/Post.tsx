@@ -18,6 +18,7 @@ import { uploadPost } from "@/config/uploadPostMuted";
 
 
 
+
 type filetype = {
   url: string;
   type: any;
@@ -82,7 +83,7 @@ function Post({ visible, close }: any) {
     e.preventDefault();
     const formData = new FormData();
     formData.append("content", content);
-    formData.append("userid", session?.user?.id as string);
+    formData.append("userId", session?.user?.id as string);
     mediaFiles.map((media, index) => {
       formData.append(`mediaFiles`, media.file as Blob);
     });
